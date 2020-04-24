@@ -1,5 +1,5 @@
 # avail
-simple shell with count, occurence, reformat function
+simple shell with count, occurence and format function
 ### CEN-232-Project1-Group7-Task3
 ```
 18001534
