@@ -13,7 +13,12 @@ Thumbs.db
 cmake-build-debug
 CMakeLists.txt
 *.o
+*.exe
 avail
+count
+occur
+format
+README-CEN232.md
 
 # IDE #
 ######################
