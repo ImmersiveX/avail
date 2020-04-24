@@ -2,11 +2,13 @@
 // Created by 18001534 on 23/04/2020.
 //
 
+/* LIB */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
+/* DEF */
 #define SN C02VTQZ8HTD5
 
 
@@ -20,28 +22,29 @@ int main (int argc, char *argv[]){
     FILE *fileptr2;
     fileptr = fopen(argv[1], "r");
     fileptr2 = fopen(argv[2], "w");
-    // if file cannot be opened, exit
+    /* if file cannot be opened, exit */
     if (fileptr==NULL || fileptr2==NULL){
         return EXIT_FAILURE;
     }
+    /* get character from file */
     ch = fgetc(fileptr);
-    // check which [OPTION] to exec
+    /* check which [OPTION] to exec */
     if (strcmp(argv[3] , "-u") ==0 || (strcmp(argv[2] ,  "-U") )==0 || (strcmp(argv[2] ,  "-uppercase") )==0) {
-        // read until end of file
+        /* read until end of file */
         while (ch !=  EOF) {
-            // assign read character to buffer
+            /* assign read character to buffer */
             buffer = (char) ch;
-            // call toupper() on buffer to convert to uppercase
+            /* call toupper() on buffer to convert to uppercase */
             buffer = (char) toupper(buffer);
-            // write buffer to output file
+            /* write buffer to output file */
             fputc(buffer, fileptr2);
-            // next character
+            /* next character */
             ch = fgetc(fileptr);
         }
     }else if (strcmp(argv[3] , "-l") ==0 || (strcmp(argv[2] ,  "-L") )==0 || (strcmp(argv[2] ,  "-lowercase") )==0) {
         while (ch !=  EOF) {
             buffer = (char) ch;
-            // call tolower() on buffer to convert to lowercase
+            /* call tolower() on buffer to convert to lowercase */
             buffer = (char) tolower(buffer);
             fputc(buffer, fileptr2);
             ch = fgetc(fileptr);
@@ -50,9 +53,9 @@ int main (int argc, char *argv[]){
         while (ch !=  EOF) {
             buffer = (char) ch;
             scase = '_';
-            // if character is space
+            /* if character is space */
             if (buffer == ' '){
-                // write scase to output file
+                /* write scase to output file */
                 fputc(scase, fileptr2);
             } else {
                 fputc(buffer, fileptr2);
@@ -96,7 +99,7 @@ int main (int argc, char *argv[]){
     fclose(fileptr);
     fclose(fileptr2);
 
-    /* for testing purposes*/
+    /* for testing purposes */
     //printf("%s\n%s\n%s\n", argv[0], argv[1], argv[2]);
     //printf("option: %s\n", argv[3]);
     return EXIT_SUCCESS;
