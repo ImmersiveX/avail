@@ -48,5 +48,6 @@ int main (int argc, char *argv[]){
     //printf("option: %s\n", argv[2]);
     //printf("word/char: %s\n", argv[3]);
     //printf("word equal to test:%d\n", ((strcmp(argv[3], "test"))==0));
+    //printf("%s", (char *) SN);
     return EXIT_SUCCESS;
 }

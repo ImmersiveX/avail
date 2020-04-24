@@ -102,5 +102,6 @@ int main (int argc, char *argv[]){
     /* for testing purposes */
     //printf("%s\n%s\n%s\n", argv[0], argv[1], argv[2]);
     //printf("option: %s\n", argv[3]);
+    //printf("%s", (char *) SN);
     return EXIT_SUCCESS;
 }
