@@ -11,42 +11,49 @@
 
 
 int main (int argc, char *argv[]){
-    char *ch;
+    int ch;
     char SN;
     char buffer;
-    char ccase;
+    char scase;
+    int ch1;
     FILE *fileptr;
     FILE *fileptr2;
-    /*if (strcmp(argv[1] , "-h") ==0 || (strcmp(argv[1] ,  "-help") || (strcmp(argv[1] ,  "-H"))==0)){
-        fprintf(stdout, "options manual\n");
-    } else{ */
     fileptr = fopen(argv[1], "r");
     fileptr2 = fopen(argv[2], "w");
-    //}
-    if (fileptr==NULL){
+    // if file cannot be opened, exit
+    if (fileptr==NULL || fileptr2==NULL){
         return EXIT_FAILURE;
     }
     ch = fgetc(fileptr);
+    // check which [OPTION] to exec
     if (strcmp(argv[3] , "-u") ==0 || (strcmp(argv[2] ,  "-U") )==0 || (strcmp(argv[2] ,  "-uppercase") )==0) {
-        while (ch != (char *) EOF) {
+        // read until end of file
+        while (ch !=  EOF) {
+            // assign read character to buffer
             buffer = (char) ch;
+            // call toupper() on buffer to convert to uppercase
             buffer = (char) toupper(buffer);
+            // write buffer to output file
             fputc(buffer, fileptr2);
+            // next character
             ch = fgetc(fileptr);
         }
     }else if (strcmp(argv[3] , "-l") ==0 || (strcmp(argv[2] ,  "-L") )==0 || (strcmp(argv[2] ,  "-lowercase") )==0) {
-        while (ch != (char *) EOF) {
+        while (ch !=  EOF) {
             buffer = (char) ch;
+            // call tolower() on buffer to convert to lowercase
             buffer = (char) tolower(buffer);
             fputc(buffer, fileptr2);
             ch = fgetc(fileptr);
         }
     }else if (strcmp(argv[3] , "-sc") ==0 || (strcmp(argv[2] ,  "-SC") )==0 || (strcmp(argv[2] ,  "-snakecase") )==0) {
-        while (ch != (char *) EOF) {
+        while (ch !=  EOF) {
             buffer = (char) ch;
-            ccase = '_';
+            scase = '_';
+            // if character is space
             if (buffer == ' '){
-                fputc(ccase, fileptr2);
+                // write scase to output file
+                fputc(scase, fileptr2);
             } else {
                 fputc(buffer, fileptr2);
             }
@@ -76,9 +83,9 @@ int main (int argc, char *argv[]){
         /*
         while (ch != (char *) EOF) {
             buffer = (char) ch;
-            ccase = '_';
+            scase = '_';
             if (buffer == ' '){
-                fputc(ccase, fileptr2);
+                fputc(scase, fileptr2);
             } else {
                 fputc(buffer, fileptr2);
             }
@@ -90,7 +97,7 @@ int main (int argc, char *argv[]){
     fclose(fileptr2);
 
     /* for testing purposes*/
-    printf("%s\n%s\n%s\n", argv[0], argv[1], argv[2]);
-    printf("option: %s\n", argv[3]);
+    //printf("%s\n%s\n%s\n", argv[0], argv[1], argv[2]);
+    //printf("option: %s\n", argv[3]);
     return EXIT_SUCCESS;
 }
