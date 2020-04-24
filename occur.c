@@ -31,7 +31,7 @@ int main (int argc, char *argv[]){
         while (ch != NULL){
             i = 0;
             /* find next occurrence of specified character/word */
-            while ((position = strstr(buffer + i, argv[3])) != NULL) {
+            while ((position = strstr(buffer + i, argv[2])) != NULL) {
                 /* index of the character/word in buffer is:
                  * memory address of position - memory address of buffer */
                 i= (int) ((position - buffer) + 1);
