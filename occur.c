@@ -21,6 +21,7 @@ int main (int argc, char *argv[]){
     char SN;
     FILE *fileptr;
     fileptr = fopen(argv[1], "r");
+    /* if file cannot be opened, exit */
     if (fileptr==NULL){
         return EXIT_FAILURE;
     }
