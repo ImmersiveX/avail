@@ -19,6 +19,7 @@ count
 occur
 format
 README-CEN232.md
+*.zip
 
 # IDE #
 ######################
