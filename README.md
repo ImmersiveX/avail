@@ -26,7 +26,7 @@ format <path> <opath> [OPTION]
 
 ``count`` - count amount of characters/words/lines
 
-``occur `` - count all occurrences of characters/words
+``occur`` - count all occurrences of characters/words
 
 ``format`` - format camelcase/snakecase/lowercase/uppercase
 
