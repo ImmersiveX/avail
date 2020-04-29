@@ -9,10 +9,9 @@
 #include <ctype.h>
 
 /* DEF */
-#define SN C02VTQZ8HTD5
+#define SN C02VTQZ8HTD5         /*                                       */
 
-
-int main (int argc, char *argv[]){
+int main(int argc, char *argv[]) {
     int ch;
     char SN;
     char buffer;
@@ -23,15 +22,15 @@ int main (int argc, char *argv[]){
     fileptr = fopen(argv[1], "r");
     fileptr2 = fopen(argv[2], "w");
     /* if file cannot be opened, exit */
-    if (fileptr==NULL || fileptr2==NULL){
+    if (fileptr == NULL || fileptr2 == NULL) {
         return EXIT_FAILURE;
     }
     /* get character from file */
     ch = fgetc(fileptr);
     /* check which [OPTION] to exec */
-    if (strcmp(argv[3] , "-u") ==0 || (strcmp(argv[2] ,  "-U") )==0 || (strcmp(argv[2] ,  "-uppercase") )==0) {
+    if (strcmp(argv[3], "-u") == 0 || (strcmp(argv[2], "-U")) == 0 || (strcmp(argv[2], "-uppercase")) == 0) {
         /* read until end of file */
-        while (ch !=  EOF) {
+        while (ch != EOF) {
             /* assign read character to buffer */
             buffer = (char) ch;
             /* call toupper() on buffer to convert to uppercase */
@@ -41,20 +40,20 @@ int main (int argc, char *argv[]){
             /* next character */
             ch = fgetc(fileptr);
         }
-    }else if (strcmp(argv[3] , "-l") ==0 || (strcmp(argv[2] ,  "-L") )==0 || (strcmp(argv[2] ,  "-lowercase") )==0) {
-        while (ch !=  EOF) {
+    } else if (strcmp(argv[3], "-l") == 0 || (strcmp(argv[2], "-L")) == 0 || (strcmp(argv[2], "-lowercase")) == 0) {
+        while (ch != EOF) {
             buffer = (char) ch;
             /* call tolower() on buffer to convert to lowercase */
             buffer = (char) tolower(buffer);
             fputc(buffer, fileptr2);
             ch = fgetc(fileptr);
         }
-    }else if (strcmp(argv[3] , "-sc") ==0 || (strcmp(argv[2] ,  "-SC") )==0 || (strcmp(argv[2] ,  "-snakecase") )==0) {
-        while (ch !=  EOF) {
+    } else if (strcmp(argv[3], "-sc") == 0 || (strcmp(argv[2], "-SC")) == 0 || (strcmp(argv[2], "-snakecase")) == 0) {
+        while (ch != EOF) {
             buffer = (char) ch;
             scase = '_';
             /* if character is space */
-            if (buffer == ' '){
+            if (buffer == ' ') {
                 /* write scase to output file */
                 fputc(scase, fileptr2);
             } else {
@@ -62,7 +61,7 @@ int main (int argc, char *argv[]){
             }
             ch = fgetc(fileptr);
         }
-    }else if (strcmp(argv[3] , "-cc") ==0 || (strcmp(argv[2] ,  "-CC") )==0 || (strcmp(argv[2] ,  "-camelcase") )==0) {
+    } else if (strcmp(argv[3], "-cc") == 0 || (strcmp(argv[2], "-CC")) == 0 || (strcmp(argv[2], "-camelcase")) == 0) {
         /*int counter = 0;
         char *ch2;
         char buffer2[500];

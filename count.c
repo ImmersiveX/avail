@@ -8,38 +8,38 @@
 #include <string.h>
 
 /* DEF */
-#define SN C02VTQZ8HTD5
+#define SN C02VTQZ8HTD5         /*                                       */
 
-int main (int argc, char *argv[]){
+int main(int argc, char *argv[]) {
     int counter = 0;
     char ch;
     char SN;
     FILE *fileptr;
     fileptr = fopen(argv[1], "r");
     /* if file cannot be opened, exit */
-    if (fileptr==NULL){
+    if (fileptr == NULL) {
         return EXIT_FAILURE;
     }
     /* get character from file */
     ch = fgetc(fileptr);
     /* check which [OPTION] to exec */
-    if (strcmp(argv[2] , "-c") ==0 || (strcmp(argv[2] ,  "-C") )==0){
+    if (strcmp(argv[2], "-c") == 0 || (strcmp(argv[2], "-C")) == 0) {
         /* read until end of file */
-        while(ch !=EOF) {
+        while (ch != EOF) {
             /* if character is a letter */
-            if (ch != ' ' && ch !='\n') {
+            if (ch != ' ' && ch != '\n') {
                 counter++;
             }
             /* LIB */
-            ch=fgetc(fileptr);
+            ch = fgetc(fileptr);
         }
-    } else if ((strcmp(argv[2] ,  "-l") ==0  || (strcmp(argv[2] ,  "-L")) ==0)) {
-        while(ch !=EOF) {
+    } else if ((strcmp(argv[2], "-l") == 0 || (strcmp(argv[2], "-L")) == 0)) {
+        while (ch != EOF) {
             /* if character is newline  */
             if (ch == '\n') {
                 counter++;
             }
-            ch=fgetc(fileptr);
+            ch = fgetc(fileptr);
         }
     } else if (strcmp(argv[2], "-w") == 0 || (strcmp(argv[2], "-W")) == 0) {
         while (ch != EOF) {
@@ -47,7 +47,7 @@ int main (int argc, char *argv[]){
             if (ch == ' ' || ch == '\n') {
                 counter++;
             }
-            ch=fgetc(fileptr);
+            ch = fgetc(fileptr);
         }
     }
     fclose(fileptr);

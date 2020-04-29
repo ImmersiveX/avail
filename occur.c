@@ -8,11 +8,10 @@
 #include <string.h>
 
 /* DEF */
-#define BUFFER_SIZE 500     /* buffer size for reading file */
-#define SN C02VTQZ8HTD5
+#define BUFFER_SIZE 500         /* buffer size for reading file          */
+#define SN C02VTQZ8HTD5         /*                                       */
 
-
-int main (int argc, char *argv[]){
+int main(int argc, char *argv[]) {
     int counter = 0;
     char *ch;
     char buffer[BUFFER_SIZE];
@@ -22,24 +21,24 @@ int main (int argc, char *argv[]){
     FILE *fileptr;
     fileptr = fopen(argv[1], "r");
     /* if file cannot be opened, exit */
-    if (fileptr==NULL){
+    if (fileptr == NULL) {
         return EXIT_FAILURE;
     }
     /* get stream of BUFFER_SIZE from file */
     ch = fgets(buffer, BUFFER_SIZE, fileptr);
-        /* read until end of file */
-        while (ch != NULL){
-            i = 0;
-            /* find next occurrence of specified character/word */
-            while ((position = strstr(buffer + i, argv[2])) != NULL) {
-                /* index of the character/word in buffer is:
-                 * memory address of position - memory address of buffer */
-                i= (int) ((position - buffer) + 1);
-                counter++;
-            }
-            /* get next stream of BUFFER_SIZE from file */
-            ch = fgets(buffer, BUFFER_SIZE, fileptr);
+    /* read until end of file */
+    while (ch != NULL) {
+        i = 0;
+        /* find next occurrence of specified character/word */
+        while ((position = strstr(buffer + i, argv[2])) != NULL) {
+            /* index of the character/word in buffer is:
+             * memory address of position - memory address of buffer */
+            i = (int) ((position - buffer) + 1);
+            counter++;
         }
+        /* get next stream of BUFFER_SIZE from file */
+        ch = fgets(buffer, BUFFER_SIZE, fileptr);
+    }
     fclose(fileptr);
     printf("%d\n", counter);
 
