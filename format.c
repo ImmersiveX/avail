@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     /* get character from file */
     ch = fgetc(fileptr);
     /* check which [OPTION] to exec */
-    if (strcmp(argv[3], "-u") == 0 || (strcmp(argv[2], "-U")) == 0 || (strcmp(argv[2], "-uppercase")) == 0) {
+    if (strcmp(argv[3], "-u") == 0 || (strcmp(argv[3], "-U")) == 0 || (strcmp(argv[3], "-uppercase")) == 0) {
         /* read until end of file */
         while (ch != EOF) {
             /* assign read character to buffer */
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
             /* next character */
             ch = fgetc(fileptr);
         }
-    } else if (strcmp(argv[3], "-l") == 0 || (strcmp(argv[2], "-L")) == 0 || (strcmp(argv[2], "-lowercase")) == 0) {
+    } else if (strcmp(argv[3], "-l") == 0 || (strcmp(argv[3], "-L")) == 0 || (strcmp(argv[3], "-lowercase")) == 0) {
         while (ch != EOF) {
             buffer = (char) ch;
             /* call tolower() on buffer to convert to lowercase */
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
             fputc(buffer, fileptr2);
             ch = fgetc(fileptr);
         }
-    } else if (strcmp(argv[3], "-sc") == 0 || (strcmp(argv[2], "-SC")) == 0 || (strcmp(argv[2], "-snakecase")) == 0) {
+    } else if (strcmp(argv[3], "-sc") == 0 || (strcmp(argv[3], "-SC")) == 0 || (strcmp(argv[3], "-snakecase")) == 0) {
         while (ch != EOF) {
             buffer = (char) ch;
             scase = '_';
@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
             }
             ch = fgetc(fileptr);
         }
-    } else if (strcmp(argv[3], "-cc") == 0 || (strcmp(argv[2], "-CC")) == 0 || (strcmp(argv[2], "-camelcase")) == 0) {
+    } else if (strcmp(argv[3], "-cc") == 0 || (strcmp(argv[3], "-CC")) == 0 || (strcmp(argv[3], "-camelcase")) == 0) {
         /*int counter = 0;
         char *ch2;
         char buffer2[500];
